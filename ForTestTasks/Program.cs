@@ -1,9 +1,24 @@
-﻿namespace ForTestTasks;
+﻿using ForTestTasks.Patterns.Singleton;
 
-class Program
+namespace ForTestTasks;
+
+public class Program
 {
-    static void Main(string[] args)
+    private static CustomStringReader _stringReader;
+    
+    public static async Task Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        InitServices();
+
+        Console.WriteLine("Enter path to file:");
+        
+        string? pathToFile = Console.ReadLine();
+            
+        await _stringReader.ReadFirstNonEmptyLineAsync(pathToFile);
+    }
+
+    private static void InitServices()
+    {
+        _stringReader = CustomStringReader.Instance;
     }
 }
