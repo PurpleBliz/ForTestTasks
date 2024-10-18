@@ -15,6 +15,10 @@ public class Program
         string? pathToFile = Console.ReadLine();
             
         await _stringReader.ReadFirstNonEmptyLineAsync(pathToFile);
+
+        Console.WriteLine("Press any key to exit: ");
+        
+        Console.ReadKey();
     }
 
     private static void InitServices()
